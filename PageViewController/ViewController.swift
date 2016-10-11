@@ -78,14 +78,11 @@ class ViewController: UIViewController,UIPageViewControllerDataSource,UIPageView
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    
+    //目录按钮点击
     func catagoryClicked(){
         let cateVC = CategoryViewController()
-        cateVC.titles  =  getTitles() as! [String]
-        cateVC.categoryDelegate = self
+        cateVC.showCategoryWithViewController(self, chapter: currentChapter,titles:getTitles() as! [String])
         navBar.hideWithAnimations(true)
-        let nav = UINavigationController(rootViewController: cateVC)
-        presentViewController(nav, animated: true, completion: nil)
     }
     
     func toolBarDidShow(){
