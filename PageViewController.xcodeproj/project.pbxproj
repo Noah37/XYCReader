@@ -40,6 +40,9 @@
 		B2C91E671DAB8CC9002B6C6F /* PageInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C91E661DAB8CC9002B6C6F /* PageInfoModel.swift */; };
 		B2C91E691DAB94B5002B6C6F /* ChapterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C91E681DAB94B5002B6C6F /* ChapterModel.swift */; };
 		B2C91E6B1DABD998002B6C6F /* ToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C91E6A1DABD998002B6C6F /* ToolBar.swift */; };
+		B2C91E6D1DACBE3D002B6C6F /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C91E6C1DACBE3D002B6C6F /* CategoryViewController.swift */; };
+		B2C91E701DACC5C1002B6C6F /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C91E6E1DACC5C1002B6C6F /* CategoryTableViewCell.swift */; };
+		B2C91E711DACC5C1002B6C6F /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2C91E6F1DACC5C1002B6C6F /* CategoryTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +103,9 @@
 		B2C91E661DAB8CC9002B6C6F /* PageInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageInfoModel.swift; sourceTree = "<group>"; };
 		B2C91E681DAB94B5002B6C6F /* ChapterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterModel.swift; sourceTree = "<group>"; };
 		B2C91E6A1DABD998002B6C6F /* ToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolBar.swift; sourceTree = "<group>"; };
+		B2C91E6C1DACBE3D002B6C6F /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		B2C91E6E1DACC5C1002B6C6F /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		B2C91E6F1DACC5C1002B6C6F /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +161,9 @@
 				B2C91E2A1DAB5259002B6C6F /* RootViewController.swift */,
 				B2C91DA61DA9F3F8002B6C6F /* ViewController.swift */,
 				B2C91DD41DA9FD25002B6C6F /* PageViewController.swift */,
+				B2C91E6C1DACBE3D002B6C6F /* CategoryViewController.swift */,
+				B2C91E6E1DACC5C1002B6C6F /* CategoryTableViewCell.swift */,
+				B2C91E6F1DACC5C1002B6C6F /* CategoryTableViewCell.xib */,
 				B2C91DD21DA9F853002B6C6F /* PageView.swift */,
 				B2C91E6A1DABD998002B6C6F /* ToolBar.swift */,
 				B2C91E661DAB8CC9002B6C6F /* PageInfoModel.swift */,
@@ -323,6 +332,7 @@
 				B2C91DAF1DA9F3F8002B6C6F /* LaunchScreen.storyboard in Resources */,
 				B2C91DAC1DA9F3F8002B6C6F /* Assets.xcassets in Resources */,
 				B2C91DDD1DAA55B4002B6C6F /* 743.txt in Resources */,
+				B2C91E711DACC5C1002B6C6F /* CategoryTableViewCell.xib in Resources */,
 				B2C91E1A1DAB4F66002B6C6F /* Images.xcassets in Resources */,
 				B2C91DD71DAA042B002B6C6F /* test.txt in Resources */,
 				B2C91DAA1DA9F3F8002B6C6F /* Main.storyboard in Resources */,
@@ -362,6 +372,7 @@
 				B2C91E1E1DAB4F66002B6C6F /* PKHUDAnimation.swift in Sources */,
 				B2C91E1C1DAB4F66002B6C6F /* PKHUD.swift in Sources */,
 				B2C91E261DAB4F66002B6C6F /* PKHUDTextView.swift in Sources */,
+				B2C91E701DACC5C1002B6C6F /* CategoryTableViewCell.swift in Sources */,
 				B2C91E251DAB4F66002B6C6F /* PKHUDSystemActivityIndicatorView.swift in Sources */,
 				B2C91E671DAB8CC9002B6C6F /* PageInfoModel.swift in Sources */,
 				B2C91E1F1DAB4F66002B6C6F /* PKHUDAssets.swift in Sources */,
@@ -371,6 +382,7 @@
 				B2C91DA51DA9F3F8002B6C6F /* AppDelegate.swift in Sources */,
 				B2C91E191DAB4F66002B6C6F /* HUD.swift in Sources */,
 				B2C91E271DAB4F66002B6C6F /* PKHUDWideBaseView.swift in Sources */,
+				B2C91E6D1DACBE3D002B6C6F /* CategoryViewController.swift in Sources */,
 				B2C91E2B1DAB5259002B6C6F /* RootViewController.swift in Sources */,
 				B2C91E181DAB4F66002B6C6F /* FrameView.swift in Sources */,
 				B2C91E281DAB4F66002B6C6F /* Window.swift in Sources */,

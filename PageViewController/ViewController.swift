@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,UIPageViewControllerDataSource,UIPageViewControllerDelegate,ToolBarDelegate {
+class ViewController: UIViewController,UIPageViewControllerDataSource,UIPageViewControllerDelegate,ToolBarDelegate ,CategoryDelegate{
     var currentChapter:Int = 0
     var currentPage:Int = 0
     private var isToolBarShow:Bool = false
@@ -59,6 +59,16 @@ class ViewController: UIViewController,UIPageViewControllerDataSource,UIPageView
         navBar.showWithAnimations(true)
     }
     
+    func categoryDidSelectAtIndex(index:Int){
+        let model = pageInfoModel
+        model?.chapter = index
+        model?.pageIndex = 0
+        pageInfoModel = model
+        currentPage = model!.pageIndex
+        currentChapter = model!.chapter
+        pageController.setViewControllers([self.pageViewWithChapter(model!.chapter,page:model!.pageIndex)], direction: .Forward, animated: true, completion: nil)
+    }
+    
     //MARK: - ToolBarDelegate
     func backButtonDidClicked(){
         let model = self.pageInfoModel
@@ -68,8 +78,14 @@ class ViewController: UIViewController,UIPageViewControllerDataSource,UIPageView
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    
     func catagoryClicked(){
-        
+        let cateVC = CategoryViewController()
+        cateVC.titles  =  getTitles() as! [String]
+        cateVC.categoryDelegate = self
+        navBar.hideWithAnimations(true)
+        let nav = UINavigationController(rootViewController: cateVC)
+        presentViewController(nav, animated: true, completion: nil)
     }
     
     func toolBarDidShow(){
@@ -80,6 +96,16 @@ class ViewController: UIViewController,UIPageViewControllerDataSource,UIPageView
     func toolBarDidHidden(){
         isToolBarShow = false
         setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    private func getTitles()->NSArray{
+        let tittles = NSMutableArray()
+        if self.pageInfoModel?.chapters?.count > 0 || self.pageInfoModel?.chapters != nil {
+            for item in self.pageInfoModel!.chapters! {
+                tittles.addObject((item as ChapterModel).title)
+            }
+        }
+        return tittles.copy() as! NSArray
     }
     
     

@@ -43,6 +43,12 @@ class ToolBar: UIView {
         backBtn.frame = CGRectMake(10, 27, 30, 30)
         topBar?.addSubview(backBtn)
         
+        let btn = UIButton(type: .Custom)
+        btn.setImage(UIImage(named: "catelog"), forState: .Normal)
+        btn.frame = CGRectMake(self.bounds.size.width/2 - 15, 8, 30, 30)
+        btn.addTarget(self, action: #selector(catalogAction(_:)), forControlEvents: .TouchUpInside)
+        bottomBar?.addSubview(btn)
+        
         let tap = UITapGestureRecognizer(target: self, action:#selector(hideWithAnimations(_:)) )
         addGestureRecognizer(tap)
     }
@@ -71,6 +77,10 @@ class ToolBar: UIView {
     
     @objc private func  backAction(btn:UIButton){
         toolBarDelegate?.backButtonDidClicked()
+    }
+    
+    @objc private func catalogAction(btn:UIButton){
+        toolBarDelegate?.catagoryClicked()
     }
     
     required init?(coder aDecoder: NSCoder) {
