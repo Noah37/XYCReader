@@ -148,7 +148,7 @@ class ViewController: UIViewController,UIPageViewControllerDataSource,UIPageView
         var index = (viewController as! PageViewController).pageIndex
         index += 1
         currentPage = index
-        if currentChapter  > (pageInfoModel?.chapters?.count ?? Int(MAXFLOAT)) - 1 {
+        if currentChapter  > (pageInfoModel?.chapters?.count ?? Int.max) - 1 {
             return nil
         }
         if index >=  pageInfoModel?.chapters?[currentChapter].pageCount {

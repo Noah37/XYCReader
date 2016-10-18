@@ -20,6 +20,7 @@ class PageViewController: UIViewController {
         view.backgroundColor = UIColor.whiteColor()
         view.addSubview(pageView)
         view.addSubview(currentPageLabel)
+        view.addSubview(titleLabel)
     }
     
     lazy var pageView:PageView = {
@@ -27,6 +28,14 @@ class PageViewController: UIViewController {
         pageView.frame = CGRectMake(20, 20, self.view.bounds.size.width - 40, self.view.bounds.size.height - 40)
         pageView.backgroundColor = UIColor.whiteColor()
         return pageView
+    }()
+    
+    lazy var titleLabel:UILabel = {
+        let label = UILabel(frame: CGRectMake(0,0,UIScreen.mainScreen().bounds.size.width,20))
+        label.textAlignment = .Center
+        label.font = UIFont.systemFontOfSize(11)
+        label.textColor = UIColor.grayColor()
+        return label
     }()
     
     var totalPage:Int = 0{

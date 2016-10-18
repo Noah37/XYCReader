@@ -51,7 +51,7 @@ class PageInfoModel: NSObject ,NSCoding{
             if modelll?.chapters?.count == 0 || modelll?.chapters == nil {
                 return getChapter(WithContent: content,model: modelll!)
             }
-            return model!
+            return modelll!
         }
         return getChapter(WithContent: content,model: model!)
     }

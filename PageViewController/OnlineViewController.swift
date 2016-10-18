@@ -194,6 +194,7 @@ class OnlineViewController: UIViewController,UIPageViewControllerDataSource,UIPa
                         let chapterModel = self.pageInfoModel?.chapters?[self.currentChapter]
                         let string =  chapterModel?.stringOfPage(self.currentPage)
                         self.nextVC?.totalPage = chapterModel?.pageCount ?? 0
+                        self.nextVC?.titleLabel.text = chapterModel?.title
                         self.nextVC?.pageView.attributedText = NSMutableAttributedString(string:string ?? "", attributes: [NSFontAttributeName:UIFont.systemFontOfSize(20)])
                         
                     case .Failure(let error):
@@ -218,6 +219,7 @@ class OnlineViewController: UIViewController,UIPageViewControllerDataSource,UIPa
             vc1Attibutestring = NSMutableAttributedString(string: (pageInfoModel?.chapters![chapter].stringOfPage(page)) ?? "", attributes: [NSFontAttributeName:UIFont.systemFontOfSize(20)])
             vc1.pageView.attributedText = vc1Attibutestring
             vc1.totalPage = (pageInfoModel?.chapters![chapter].pageCount)!
+            vc1.titleLabel.text = pageInfoModel?.chapters?[chapter].title
             return vc1
         }
     }
