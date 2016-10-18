@@ -29,7 +29,11 @@ class PageViewController: UIViewController {
         return pageView
     }()
     
-    var totalPage:Int = 0
+    var totalPage:Int = 0{
+        didSet{
+            self.currentPageLabel.text = "\(self.pageIndex + 1)/\(self.totalPage)"
+        }
+    }
     
     private lazy var currentPageLabel:UILabel = {
        let label = UILabel(frame: CGRectMake(0,self.view.bounds.size.height - 30,self.view.bounds.size.width,30))

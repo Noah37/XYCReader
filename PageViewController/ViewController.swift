@@ -17,7 +17,7 @@ class ViewController: UIViewController,UIPageViewControllerDataSource,UIPageView
        let pageController = UIPageViewController(transitionStyle: .PageCurl, navigationOrientation: .Horizontal, options: nil)
         pageController.dataSource = self
         pageController.delegate = self
-        pageController.setViewControllers([self.pageViewWithChapter(self.pageInfoModel!.chapter,page:self.pageInfoModel!.pageIndex)], direction: .Forward, animated: true, completion: nil)
+        pageController.setViewControllers([self.pageViewWithChapter(self.pageInfoModel?.chapter ?? 0,page:self.pageInfoModel?.pageIndex ?? 0)], direction: .Forward, animated: true, completion: nil)
         return pageController
     }()
     
@@ -66,7 +66,7 @@ class ViewController: UIViewController,UIPageViewControllerDataSource,UIPageView
         pageInfoModel = model
         currentPage = model!.pageIndex
         currentChapter = model!.chapter
-        pageController.setViewControllers([self.pageViewWithChapter(model!.chapter,page:model!.pageIndex)], direction: .Forward, animated: true, completion: nil)
+        pageController.setViewControllers([self.pageViewWithChapter(model?.chapter ?? 0,page:model?.pageIndex ?? 0)], direction: .Forward, animated: true, completion: nil)
     }
     
     //MARK: - ToolBarDelegate
@@ -74,7 +74,7 @@ class ViewController: UIViewController,UIPageViewControllerDataSource,UIPageView
         let model = self.pageInfoModel
         model?.chapter = currentChapter
         model?.pageIndex = currentPage
-        model!.updateModel(WithModel: model!)
+        model?.updateModel(WithModel: model!)
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -128,46 +128,46 @@ class ViewController: UIViewController,UIPageViewControllerDataSource,UIPageView
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        var index = (viewController as! PageViewController).pageIndex
-        index -= 1
-        currentPage = index
+        currentPage = (viewController as! PageViewController).pageIndex
+        currentPage -= 1
         if currentChapter < 0 {
+            currentChapter = 0
             return nil
         }
-        if index < 0 && currentChapter == 0 {
-            return nil
-        }
-        if index < 0 {
+        if currentPage < 0 {
+            if currentChapter == 0 {
+                return nil
+            }
             currentChapter -= 1
-            index = (pageInfoModel?.chapters![currentChapter].pageCount)! - 1
+            currentPage = (pageInfoModel?.chapters?[currentChapter].pageCount ?? 1) - 1
         }
-        return pageViewWithChapter(currentChapter,page:index)
+        return pageViewWithChapter(currentChapter,page:currentPage)
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         var index = (viewController as! PageViewController).pageIndex
         index += 1
         currentPage = index
-        if currentChapter  > pageInfoModel!.chapters!.count - 1 {
+        if currentChapter  > (pageInfoModel?.chapters?.count ?? Int(MAXFLOAT)) - 1 {
             return nil
         }
-        if index >=  pageInfoModel?.chapters![currentChapter].pageCount && currentChapter == pageInfoModel!.chapters!.count - 1{
-            return nil
-        }
-        if index >= pageInfoModel?.chapters![currentChapter].pageCount {
+        if index >=  pageInfoModel?.chapters?[currentChapter].pageCount {
+            if currentChapter == pageInfoModel?.chapters?.count ?? 0 - 1 {
+                return nil
+            }
             currentChapter += 1
-            index = 0
+            currentPage = 0
         }
-        return pageViewWithChapter(currentChapter,page: index)
+        return pageViewWithChapter(currentChapter,page: currentPage)
     }
     
     func pageViewWithChapter(chapter:Int,page:Int)->UIViewController{
         let vc1 = PageViewController()
         vc1.pageIndex = page
         var vc1Attibutestring = NSMutableAttributedString(string: "")
-        vc1Attibutestring = NSMutableAttributedString(string: (pageInfoModel?.chapters![chapter].stringOfPage(page)) ?? "", attributes: [NSFontAttributeName:UIFont.systemFontOfSize(20)])
+        vc1Attibutestring = NSMutableAttributedString(string: (pageInfoModel?.chapters?[chapter].stringOfPage(page)) ?? "", attributes: [NSFontAttributeName:UIFont.systemFontOfSize(20)])
         vc1.pageView.attributedText = vc1Attibutestring
-        vc1.totalPage = (pageInfoModel?.chapters![chapter].pageCount)!
+        vc1.totalPage = pageInfoModel?.chapters?[chapter].pageCount ?? 0
         return vc1
     }
     
